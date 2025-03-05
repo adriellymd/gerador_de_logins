@@ -1,0 +1,6 @@
+pypdf2==3.0.1
+reportlab==4.0.9
+flask
+pandas
+openpyxl
+
