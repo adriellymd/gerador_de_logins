@@ -19,7 +19,7 @@
             <label for="template">Envie seu template (.pdf)</label>
             <input type="file" id="template" name="template" required>
 
-            <a href="{{url_for('static', filename='template.pdf')}}" download="template.pdf">Baixe o template para envio</a>
+            <a href="static/template.pdf" download="template.pdf">Baixe o template para envio</a>
 
             <button type="submit">Gerar PDF</button>
         </form>
@@ -36,7 +36,7 @@
             <div id="modal-content">
                 <h2>Como Funciona o Gerador de PDF?</h2>
                 <p>Este site permite que você envie uma planilha no formato .xlsx contendo uma coluna chamada "Nome" e um template no formato .pdf. O gerador utilizará esses arquivos para criar um PDF personalizado, baseado nas informações fornecidas.</p>
-                <p>Para visualizar onde as informações serão exibidas, você pode baixar a versão do template em <a href="{{ url_for('static', filename='template.pdf') }}" download="template.pdf">PDF</a>.</p>
+                <p>Para visualizar onde as informações serão exibidas, você pode baixar a versão do template em <a href="static/template.pdf" download="template.pdf">PDF</a>.</p>
                 <button id="modal-close">Fechar</button>
             </div>
         </div>
