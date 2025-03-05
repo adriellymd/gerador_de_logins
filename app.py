@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, send_from_directory
 import os
 import pandas as pd
 import random
@@ -10,7 +10,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 app = Flask(__name__)
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')  # Alterado para caminho absoluto
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # gera pdf  
@@ -20,7 +20,7 @@ def read(caminho):
     df['senha'] = df['Nome'].apply(lambda x: ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(10)))  # gerar senha
     return df
 
-def adicionar_texto(dados, inicio, fim, escritor_pdf, modelo_pdf):
+def adicionar_texto(dados, inicio, fim, escritor_pdf, modelo_pdf):  
     posicoes = [
         (69, 570), (280, 570), (491, 570), (702, 570),
         (69, 418), (280, 418), (491, 418), (702, 418),
@@ -74,7 +74,7 @@ def gerar_pdf(planilha_path, template_path):
 # flask
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return send_from_directory(os.getcwd(), 'index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
